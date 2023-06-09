@@ -193,7 +193,7 @@
 //================JS is weird==========
 
 function weired (){
-  height = 50;
+  var height = 50;
   return height
 }
 console.log(weired())
