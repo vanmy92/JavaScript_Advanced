@@ -192,11 +192,21 @@
 
 //================JS is weird==========
 
-function weired (){
-  var height = 50;
-  return height
-}
-console.log(weired())
+// function weired (){
+//   var height = 50;
+//   return height
+// }
+// console.log(weired())
+
+
+// function scope
+// vs
+// block scope
+
+
+
+
+
 
 //================Function Scope vs Block Scope==========
 
@@ -208,11 +218,19 @@ console.log(weired())
 // }
 // loop()
 
-// (function(){
-//   var a = 1
-// }());
+
+
+
+
+(function(){
+  var a = 1
+}());
+
 
 // function(){}()
+
+
+
 
 //================This keyword==========
 // 1. gives methods acess to their object
