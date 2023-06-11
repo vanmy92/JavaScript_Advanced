@@ -61,10 +61,6 @@
 
 // foodThroughts();
 
-
-
-
-
 // ================Function Invocation==========
 
 // // function expression
@@ -75,7 +71,7 @@
 // function india() {
 //   console.log(arguments)
 //   console.log('warm')
-// } 
+// }
 
 // // canada()
 // india()
@@ -93,8 +89,6 @@
 //     return `${args[0]} is now married to ${args[1]}`
 // }
 // marr2('Tim', 'Tina')
-
-
 
 // //================arguments Keyword==========
 
@@ -117,10 +111,6 @@
 
 // // marry2('a', 'b')
 
-
-
-
-
 // //================Variable evironment==========
 // function two(){
 //   var isValid;  //underfined
@@ -133,9 +123,6 @@
 
 // var isValid = false;
 // console.log(one());
-
-
-
 
 // //================return==========
 
@@ -151,7 +138,6 @@
 // // console.log(login("123123"));
 
 // //================Scope chain==========
-
 
 // var x = 'x'
 // function findName() {
@@ -188,8 +174,6 @@
 
 // console.log(sayMyName()()())
 
-
-
 //================JS is weird==========
 
 // function weired (){
@@ -198,15 +182,9 @@
 // }
 // console.log(weired())
 
-
 // function scope
 // vs
 // block scope
-
-
-
-
-
 
 //================Function Scope vs Block Scope==========
 
@@ -218,39 +196,31 @@
 // }
 // loop()
 
-
-
-
-
-(function(){
-  var a = 1
-}());
-
+// (function(){
+//   var a = 1
+// }());
 
 // function(){}()
-
-
-
 
 //================This keyword==========
 // 1. gives methods acess to their object
 // 2. execute same code for multiple objects
 
 // const obj = {
-//   name: "Abcd",
+//   name: "Billy",
 //   sing() {
-//     return "lalala " + this.name;
+//     return "lalala Billy " + this.name;
 //   },
 //   singAgain(){
-//     return "lalala " + this.sing() + "!"
+//     return " qwqwqw  Billy   " + this.sing() + "!"
 //   }
 // };
 // console.log(obj.singAgain())
 
-// const name = "Sunnyiasdafsd";
 // function importPerson() {
 //   console.log(this.name + '!');
 // }
+// const name = "Sunnyiasdafsd";
 
 // const obj1 = {
 //   name: "Cassy",
@@ -263,7 +233,7 @@
 // };
 // importPerson()
 // obj1.importPerson()
-// obj2.importPerson()
+// // obj2.importPerson()
 
 // console.log(importPerson())
 
@@ -292,18 +262,24 @@
 //   health: 50,
 //   heal(num1, num2) {
 //     return (this.health += num1 + num2);
-//   }
+//   },
+//   // heal() {
+//   //   return this.health = 1000;
+//   // },
 // };
 
 // const archer = {
 //   name: "robin hood",
-//   health: 30
+//   health: 30,
 // };
 
-// console.log('1', archer)
-// const healArchrt = wizard.heal.bind(archer, 1, 1)
-// healArchrt()
-// console.log('2', archer)
+// console.log("1", archer);
+// console.log(wizard.heal.call(archer, 50,30))
+
+// console.log('2')
+// const healArchrt = wizard.heal.bind(archer, 1, 1);
+// healArchrt();
+// console.log("2", archer);
 
 //================function currying==========
 
@@ -318,6 +294,12 @@
 // let multipleByTen = multiple.bind(this,10)
 
 // console.log(multipleByTen(4))
+
+
+
+
+
+
 
 
 //================this Keyword==========
@@ -336,6 +318,14 @@
 //   say() { return () => console.log(this) }
 // }
 
-// // b.say()
-// // c.say()()
+// b.say()
+// console.log(`----`)
+// c.say()
+// console.log(`----`)
+// c.say()()
+// console.log(`----`)
 // console.log(d.say())
+
+//================Section OverView==========
+
+
