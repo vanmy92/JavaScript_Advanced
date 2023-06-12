@@ -378,18 +378,14 @@
 
 // console.log(obj.two())
 
-
 // function three(){
 
 //     return 3
 // }
 // console.log(three.call())
 
-
 // const four =  new Function('return 4')
 // console.log(four())
-
-
 
 //===============Fisrt Class Citizens==========
 // //1
@@ -413,12 +409,7 @@
 
 // console.log(b()())
 
-
-
 //==============Higher Order Function==========
-
-
-
 
 // const giveAccessTo = (name) => 'Access Greanted to ' + name
 
@@ -442,10 +433,7 @@
 
 // }
 
-
 // console.log(letPerson({level: 'admin', name:'Tiasdfadsm'}, sing) )
-
-
 
 // const multiplyBy = function (num1){
 //     return function(num2){
@@ -454,7 +442,6 @@
 // }
 
 // const multiplyBy = (num1) => (num2) => num1*num2
-
 
 // const multiplyByTwo = multiplyBy(2)
 // const multiplyByFive = multiplyBy(5)
@@ -465,6 +452,120 @@
 
 // console.log(multiplyBy(6)(4))
 
-
 //==============closures==========
+// function a() {
+//   let grandpa = "granpa";
+//   return function b() {
+//     let father = "father";
+//     let random = Math.random();
+//     return function c() {
+//       let son = "son";
+//       return `${grandpa} > ${father} > ${son}`;
+//     };
+//   };
+// }
 
+// console.log(a()()())
+
+// const one = a()
+
+// const  boo = (string) => (name) =>(name2) => console.log(`${string} ${name} ${name2}`)
+// // console.log(boo('hi')('tim')('becca'))
+// const booString = boo('hi')
+// const booStringName =  booString()
+
+// function callMeBaybe(){
+
+//     setTimeout(function(){
+//         console.log(callMe)
+//     }, 4000)
+//     const callMe = 'hi ! i am now here';
+// }
+// console.log(callMeBaybe())
+
+//==============closures and memory==========
+
+// function heavyDuty(index){
+//     const bigArry = new Array(7000).fill(' 😄   ')
+//     console.log('created !')
+//     return bigArry[index]
+// }
+// console.log(heavyDuty(688))
+// console.log(heavyDuty(688))
+// console.log(heavyDuty(688))
+
+// const getHeavyDuty = heavyDuty2()
+// console.log(getHeavyDuty(688))
+// console.log(getHeavyDuty(700))
+// console.log(getHeavyDuty(800))
+
+
+
+
+
+// function heavyDuty2(){
+//     const bigArry = new Array(7000).fill(' 😄   ')
+//     console.log('created Again !')
+//     return function(index){
+//         return bigArry[index]
+//     }
+// }
+
+// console.log(heavyDuty(688))
+
+
+
+
+// const makeNuclearbutton = () => {
+//   let timewithoutDestruction = 0;
+//   const passTime = () => timewithoutDestruction++;
+//   const totalPeaceTime = () => timewithoutDestruction
+//   const launch = () => {
+//     timewithoutDestruction = -1
+//     return " 🤬  ";
+//   };
+//   setInterval(passTime, 1000)
+//   return {
+//     launch:launch,
+//     totalPeaceTime: totalPeaceTime
+//   }
+// };
+// const ohon = makeNuclearbutton();
+// ohon.totalPeaceTime()
+
+
+
+
+// let view;
+
+// function initialize(){
+//   let called = 0
+//   return function(){
+//     if(called > 0){
+//       return;
+//     } else {
+//       view = '🚵 '
+//       called ++
+//       console.log('view has been set !')
+//     }
+//   }
+ 
+// }
+// const startOnce = initialize()
+// startOnce()
+// startOnce()
+
+// console.log(view)
+
+
+
+
+
+const array = [1,2,3,4]
+for(var i = 0; i <array.length; i++){
+  (function  (clouseI){
+  setTimeout(function(){
+    console.log('i am at index ' + array[clouseI])
+  }, 3000)
+})(i)
+}
