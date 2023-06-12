@@ -295,13 +295,6 @@
 
 // console.log(multipleByTen(4))
 
-
-
-
-
-
-
-
 //================this Keyword==========
 // var b = {
 //   name: 'jay',
@@ -328,4 +321,150 @@
 
 //================Section OverView==========
 
+// console.log(typeof Symbol('just me'))
+// console.log(typeof 5)
+// console.log(typeof true)
+// console.log(typeof 'to be or not to be')
+// console.log(typeof undefined)
+// console.log(typeof null)
+// console.log(typeof {})
+// console.log(typeof [])
+// console.log(typeof function(){})
+// console.log(true.toString())
+
+//================Array.isArry()==========
+
+// console.log(Array.isArray(['1']))
+
+//================Pass By Value vs Pass By Reference==========
+
+// var a = 5
+// var b = a
+
+// b++
+
+// let obj =  { a: 'a', b: 'b', c: 'c' }
+// let clone = obj
+// let clone = Object.assign({}, obj)
+// console.log(clone)
+
+// obj.c= 5
+// console.log(clone)
+
+// var c = [1,2,3,4,5]
+// var d=c
+// d.push(1341234)
+// console.log(c)
+// console.log(d)
+
+// console.log(a)
+// console.log(b)
+// let obj1 = {
+//     name:'yao',
+//     passsword:'123'
+// }
+// let obj2 = obj1
+// obj2.passsword = 'easypeasy'
+
+// console.log(obj1)
+// console.log(obj2)
+
+//===============Functions Are Objects==========
+// const obj = {
+//   two () {
+//     return 2;
+//   },
+// };
+
+// console.log(obj.two())
+
+
+// function three(){
+
+//     return 3
+// }
+// console.log(three.call())
+
+
+// const four =  new Function('return 4')
+// console.log(four())
+
+
+
+//===============Fisrt Class Citizens==========
+// //1
+//     var stuff = function(){
+
+//     }
+// //2
+// function a (fn){
+//     fn()
+// }
+
+// a(function(){
+//     console.log('hi there')
+// })
+// //3
+// function b (){
+//     return function c(){
+//         console.log('bye')
+//     }
+// }
+
+// console.log(b()())
+
+
+
+//==============Higher Order Function==========
+
+
+
+
+// const giveAccessTo = (name) => 'Access Greanted to ' + name
+
+// function authentication(verify){
+//     let arry = []
+//     for(let i = 0; i < verify; i++){
+//         arry.push(i)
+//     }
+//     return giveAccessTo(person.name)
+// }
+// function sing(person){
+//     return 'la la la my name in ' + person.name
+// }
+// function letPerson(person, fn){
+//     if(person.level==='admin'){
+//        return fn(person)
+//     }
+//     else if(person.level==='user'){
+//         return fn(person)
+//     }
+
+// }
+
+
+// console.log(letPerson({level: 'admin', name:'Tiasdfadsm'}, sing) )
+
+
+
+// const multiplyBy = function (num1){
+//     return function(num2){
+//         return num1*num2
+//     }
+// }
+
+// const multiplyBy = (num1) => (num2) => num1*num2
+
+
+// const multiplyByTwo = multiplyBy(2)
+// const multiplyByFive = multiplyBy(5)
+
+// console.log(multiplyByTwo(4))
+// console.log(multiplyByTwo(10))
+// console.log(multiplyByFive(6))
+
+// console.log(multiplyBy(6)(4))
+
+
+//==============closures==========
 
