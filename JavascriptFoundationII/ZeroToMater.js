@@ -499,10 +499,6 @@
 // console.log(getHeavyDuty(700))
 // console.log(getHeavyDuty(800))
 
-
-
-
-
 // function heavyDuty2(){
 //     const bigArry = new Array(7000).fill(' 😄   ')
 //     console.log('created Again !')
@@ -512,9 +508,6 @@
 // }
 
 // console.log(heavyDuty(688))
-
-
-
 
 // const makeNuclearbutton = () => {
 //   let timewithoutDestruction = 0;
@@ -533,9 +526,6 @@
 // const ohon = makeNuclearbutton();
 // ohon.totalPeaceTime()
 
-
-
-
 // let view;
 
 // function initialize(){
@@ -549,7 +539,7 @@
 //       console.log('view has been set !')
 //     }
 //   }
- 
+
 // }
 // const startOnce = initialize()
 // startOnce()
@@ -557,15 +547,121 @@
 
 // console.log(view)
 
+// const array = [1,2,3,4]
+// for(var i = 0; i <array.length; i++){
+//   (function  (clouseI){
+//   setTimeout(function(){
+//     console.log('i am at index ' + array[clouseI])
+//   }, 3000)
+// })(i)
+// }
 
+//==============Prototypal inheritance 2==========
 
+// let dragon = {
+//   name: "Tannay",
+//   fire: true,
+//   fight() {
+//     return 5;
+//   },
+//   sing() {
+//     if (this.fire) {
+//       return `i am ${this.name}, the breather of fire`;
+//     }
+//   },
+// };
 
+// let lizard = {
+//   name: "kiki",
+//   fight() {
+//     return 1;
+//   },
+// };
 
-const array = [1,2,3,4]
-for(var i = 0; i <array.length; i++){
-  (function  (clouseI){
-  setTimeout(function(){
-    console.log('i am at index ' + array[clouseI])
-  }, 3000)
-})(i)
+// lizard.__proto__ = dragon;
+
+// for (let prop in lizard) {
+//   if (lizard.hasOwnProperty(prop)) {
+//     console.log(prop);
+//   }
+// }
+
+//==============Prototypal inheritance 4==========
+
+// let human = {
+//   mortal: true
+// }
+// let socrates = Object.create(human)
+// socrates.age = 45
+
+// console.log(socrates)
+// console.log(human.isPrototypeOf(socrates))
+
+//==============OOP1 Factory Functions==========
+// const elf= {
+//   name : 'Orwell',
+//   weapon: 'bow',
+//   attack(){
+//     return 'attack with ' + elf.weapon
+//   }
+// }
+
+// const elf2= {
+//   name : 'Sally',
+//   weapon: 'bow',
+//   attack(){
+//     return 'attack with ' + elf2.weapon
+//   }
+// }
+
+// // console.log(elf.attack())
+// console.log(elf2.attack())
+
+// factory function
+
+// object.create()
+
+// const elfFtuntions = {
+//   attack (){
+//     return 'attack with ' + this.weapon
+//   }
+// }
+class Elf {
+  constructor(name, weapon) {
+    this.name = name;
+    this.weapon = weapon;
+  }
+  attack() {
+    return "attack with " + this.weapon;
+  }
+
 }
+
+
+// // Elf.prototype.build = function (){
+// //   const self = this
+// //   function building(){
+// //     return self.name + ' builds a house'
+// //   }
+// //   return building()
+// // }
+
+const peter = new Elf("peter", "stones");
+// peter.attack = elfFtuntions.attack
+// console.log(peter.build())
+console.log(peter instanceof Elf) 
+console.log(peter.attack());
+
+const sam = new Elf("sam", "fire");
+// sam.attack = elfFtuntions.attack
+console.log(sam.attack());
+
+//==============Funny Thing About JS ... ==========
+// var a = new Number(4)
+// console.log(typeof a)
+// var b = 5
+// console.log(typeof b)
+
+// console.log(a===b)
+
+// new Date()
