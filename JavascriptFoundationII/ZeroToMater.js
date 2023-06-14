@@ -626,16 +626,16 @@
 //     return 'attack with ' + this.weapon
 //   }
 // }
-class Elf {
-  constructor(name, weapon) {
-    this.name = name;
-    this.weapon = weapon;
-  }
-  attack() {
-    return "attack with " + this.weapon;
-  }
+// class Elf {
+//   constructor(name, weapon) {
+//     this.name = name;
+//     this.weapon = weapon;
+//   }
+//   attack() {
+//     return "attack with " + this.weapon;
+//   }
 
-}
+// }
 
 
 // // Elf.prototype.build = function (){
@@ -646,15 +646,15 @@ class Elf {
 // //   return building()
 // // }
 
-const peter = new Elf("peter", "stones");
-// peter.attack = elfFtuntions.attack
-// console.log(peter.build())
-console.log(peter instanceof Elf) 
-console.log(peter.attack());
+// const peter = new Elf("peter", "stones");
+// // peter.attack = elfFtuntions.attack
+// // console.log(peter.build())
+// console.log(peter instanceof Elf) 
+// console.log(peter.attack());
 
-const sam = new Elf("sam", "fire");
-// sam.attack = elfFtuntions.attack
-console.log(sam.attack());
+// const sam = new Elf("sam", "fire");
+// // sam.attack = elfFtuntions.attack
+// console.log(sam.attack());
 
 //==============Funny Thing About JS ... ==========
 // var a = new Number(4)
@@ -665,3 +665,218 @@ console.log(sam.attack());
 // console.log(a===b)
 
 // new Date()
+
+
+
+
+//================this - 4 ways==========
+
+
+// function Person(name, age){
+//   this.name = name;
+//   this.age = age;
+// }
+
+// const person1 = new Person("Xaver", 30);
+
+// console.log(person1)
+// // implicit binding
+// const person = {
+//   name: 'Karen',
+//   age: 30,
+//   hi() {
+//     console.log('hi ' + this.name);
+//   }
+// }
+
+// //explicit binding
+// const person3 = {
+//   name: 'Karen',
+//   age: 30,
+//   hi: function() {
+//     console.log('hi ' + this.setTimeout);
+//   }
+// }
+
+// console.log(person3.hi())
+
+
+// // arrow functions
+// const person4 = {
+//   name: 'Karen Allll',
+//   age: 30,
+//   hi: function() {
+//     var inner = () => {
+//       console.log('hi ' + this.name);
+//     }
+//     return inner();
+//   }
+// }
+
+// console.log(person4.hi())
+
+
+
+//===============Inheritance==========
+
+// class Character {
+//   constructor(name, weapon) {
+//     this.name = name;
+//     this.weapon = weapon;
+//   }
+//   attack() {
+//     return "attack with " + this.weapon;
+//   }
+
+// }
+
+// class ELF extends Character {
+//   constructor(name, weapon, type) {
+//     super(name, weapon)
+//     // console.log(this)
+//     this.type = type
+//   }
+// }
+
+// class Ogre extends Character {
+//   constructor(name, weapon, color) {
+//     super(name, weapon)
+//     this.color = color
+//   }
+//   makeFort(){
+//     return 'strongest fort in the world made ';
+//   }
+// }
+
+
+
+// const dolby = new ELF('Dolby ', 'cloth', 'house')
+// console.log(dolby)
+
+// const shrek = new Ogre('Shrek ', 'clus', 'green')
+// console.log(shrek.makeFort())
+
+// const orge = { ... fiona}
+// console.log(orge)
+
+
+
+//===============Pure function==========
+
+
+// const array = [1,2,3,4,5]
+// function removeLastItems(arr){
+//   const newArray = [].concat(arr)
+//   newArray.pop()
+//   return newArray
+// }
+// function multiplyBy2(arr){
+//   return arr.map(item => item * 2)
+// } 
+// const array2 = removeLastItems(array)
+// const array3 = multiplyBy2(array)
+// console.log(array, array2, array3)
+
+
+// function a(num1, num2){
+//   return num1 * num2
+// }
+// console.log(a(2,3))
+
+
+
+//===============Higher Order Functions and Closures==========
+
+// const hof =  () => fn(5)
+// hof(function a(x) { return x})
+// // console.log(hof()()) 
+
+
+// function addTo(n){
+//   console.log('long time')
+//   return n + 80
+// }
+
+// function memoizedAddto80(){
+//   let cache ={}
+//   return function(n){
+//     if( n in cache){
+//       return cache[n]
+//     }
+//     else {
+//       console.log('long time')
+//       cache[n] =n + 80;
+//       return cache[n]
+//     }
+//   }
+ 
+// }
+// const memized = memoizedAddto80()
+
+// console.log('1',memized(5))
+// console.log('2',memized(6))
+
+
+//===============Amazon shopping==========
+
+
+const user = {
+  name: 'Kim',
+  active: true,
+  cart: [],
+  purchases : []
+}
+
+// purchasesItem(user,{name:'laptop', price: 344})
+
+let amazonHistory = []
+
+const compose = (f,g) => (...args) => f(g(...args))
+console.log(purchasesItem(
+  emptyCart, buyItem, applyTaxToItems, addItemToCart
+)(user, {name:'laptop', price:200}))
+
+
+function purchasesItem(...fns){
+  return fns.reduce(compose)
+} 
+// function purchasesItem(user, item){
+//   return Object.assign({}, user, {purchases:item})
+// }
+
+function addItemToCart(user, item){
+  amazonHistory.push(user)  
+  const updateCart = user.cart.concat(item)
+  return Object.assign({}, user, {cart:updateCart})
+}
+
+function applyTaxToItems(user){
+  amazonHistory.push(user)
+  const {cart} = user
+  const taxRate = 1.03
+  const updatedCart = cart.map(item =>{
+    return {
+      name: item.name,
+      price: item.price* taxRate
+    }
+  })
+  return Object.assign({}, user, {cart:updatedCart})
+}
+
+function buyItem(user){
+  amazonHistory.push(user)
+  return Object.assign({}, user, {purchases:user.cart})
+}
+function emptyCart(user){
+  amazonHistory.push(user)
+  return Object.assign({}, user, {cart:[]})
+}
+
+//implement a cart feature
+// 1/ Add items to cart
+// 2/ Add 3% tax to item in cart
+// 3/ Buy item: cart --> purchases
+// 4/ Empty cart
+
+
+console.log(amazonHistory)
