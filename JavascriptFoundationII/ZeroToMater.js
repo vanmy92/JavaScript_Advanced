@@ -637,7 +637,6 @@
 
 // }
 
-
 // // Elf.prototype.build = function (){
 // //   const self = this
 // //   function building(){
@@ -649,7 +648,7 @@
 // const peter = new Elf("peter", "stones");
 // // peter.attack = elfFtuntions.attack
 // // console.log(peter.build())
-// console.log(peter instanceof Elf) 
+// console.log(peter instanceof Elf)
 // console.log(peter.attack());
 
 // const sam = new Elf("sam", "fire");
@@ -666,11 +665,7 @@
 
 // new Date()
 
-
-
-
 //================this - 4 ways==========
-
 
 // function Person(name, age){
 //   this.name = name;
@@ -700,7 +695,6 @@
 
 // console.log(person3.hi())
 
-
 // // arrow functions
 // const person4 = {
 //   name: 'Karen Allll',
@@ -714,8 +708,6 @@
 // }
 
 // console.log(person4.hi())
-
-
 
 //===============Inheritance==========
 
@@ -748,8 +740,6 @@
 //   }
 // }
 
-
-
 // const dolby = new ELF('Dolby ', 'cloth', 'house')
 // console.log(dolby)
 
@@ -759,10 +749,7 @@
 // const orge = { ... fiona}
 // console.log(orge)
 
-
-
 //===============Pure function==========
-
 
 // const array = [1,2,3,4,5]
 // function removeLastItems(arr){
@@ -772,25 +759,21 @@
 // }
 // function multiplyBy2(arr){
 //   return arr.map(item => item * 2)
-// } 
+// }
 // const array2 = removeLastItems(array)
 // const array3 = multiplyBy2(array)
 // console.log(array, array2, array3)
-
 
 // function a(num1, num2){
 //   return num1 * num2
 // }
 // console.log(a(2,3))
 
-
-
 //===============Higher Order Functions and Closures==========
 
 // const hof =  () => fn(5)
 // hof(function a(x) { return x})
-// // console.log(hof()()) 
-
+// // console.log(hof()())
 
 // function addTo(n){
 //   console.log('long time')
@@ -809,74 +792,114 @@
 //       return cache[n]
 //     }
 //   }
- 
+
 // }
 // const memized = memoizedAddto80()
 
 // console.log('1',memized(5))
 // console.log('2',memized(6))
 
+//===============Amazon shopping==========review=====
 
-//===============Amazon shopping==========
-
-
-const user = {
-  name: 'Kim',
-  active: true,
-  cart: [],
-  purchases : []
-}
-
-// purchasesItem(user,{name:'laptop', price: 344})
-
-let amazonHistory = []
-
-const compose = (f,g) => (...args) => f(g(...args))
-console.log(purchasesItem(
-  emptyCart, buyItem, applyTaxToItems, addItemToCart
-)(user, {name:'laptop', price:200}))
-
-
-function purchasesItem(...fns){
-  return fns.reduce(compose)
-} 
-// function purchasesItem(user, item){
-//   return Object.assign({}, user, {purchases:item})
+// const user = {
+//   name: 'Kim',
+//   active: true,
+//   cart: [],
+//   purchases : []
 // }
 
-function addItemToCart(user, item){
-  amazonHistory.push(user)  
-  const updateCart = user.cart.concat(item)
-  return Object.assign({}, user, {cart:updateCart})
+// // purchasesItem(user,{name:'laptop', price: 344})
+
+// let amazonHistory = []
+
+// const compose = (f,g) => (...args) => f(g(...args))
+// console.log(purchasesItem(
+//   emptyCart, buyItem, applyTaxToItems, addItemToCart
+// )(user, {name:'laptop', price:200}))
+
+// function purchasesItem(...fns){
+//   return fns.reduce(compose)
+// }
+// // function purchasesItem(user, item){
+// //   return Object.assign({}, user, {purchases:item})
+// // }
+
+// function addItemToCart(user, item){
+//   amazonHistory.push(user)
+//   const updateCart = user.cart.concat(item)
+//   return Object.assign({}, user, {cart:updateCart})
+// }
+
+// function applyTaxToItems(user){
+//   amazonHistory.push(user)
+//   const {cart} = user
+//   const taxRate = 1.03
+//   const updatedCart = cart.map(item =>{
+//     return {
+//       name: item.name,
+//       price: item.price* taxRate
+//     }
+//   })
+//   return Object.assign({}, user, {cart:updatedCart})
+// }
+
+// function buyItem(user){
+//   amazonHistory.push(user)
+//   return Object.assign({}, user, {purchases:user.cart})
+// }
+// function emptyCart(user){
+//   amazonHistory.push(user)
+//   return Object.assign({}, user, {cart:[]})
+// }
+
+// //implement a cart feature
+// // 1/ Add items to cart
+// // 2/ Add 3% tax to item in cart
+// // 3/ Buy item: cart --> purchases
+// // 4/ Empty cart
+
+// console.log(amazonHistory)
+
+
+
+
+//===============Parallel, Sequence, Race===============
+// learn more in chat GPT
+// 3 
+// parallel
+// sequencial
+// race
+const promisify = (item, delay) =>
+  new Promise((resolve) => setTimeout(() => resolve(item), delay));
+const a = () => promisify("a", 100);
+const b = () => promisify("b", 8000);
+const c = () => promisify("c", 3000);
+// console.log(a(),b(),c())
+
+async function parallel() {
+  const promises = [a(), b(), c()];
+  const [output1, output2, output3] = await Promise.all(promises);
+  return `parallel  is done: ${output1} ${output2} ${output3}`;
 }
 
-function applyTaxToItems(user){
-  amazonHistory.push(user)
-  const {cart} = user
-  const taxRate = 1.03
-  const updatedCart = cart.map(item =>{
-    return {
-      name: item.name,
-      price: item.price* taxRate
-    }
-  })
-  return Object.assign({}, user, {cart:updatedCart})
+async function race(){
+  const promises = [a(), b(), c()];
+  const output1 = await Promise.race(promises);
+  return `race is done: ${output1}`;
 }
 
-function buyItem(user){
-  amazonHistory.push(user)
-  return Object.assign({}, user, {purchases:user.cart})
+
+
+async function sequence(){
+  const output1 = await a();
+  const output2 = await b();
+  const output3 = await c();
+  return `sequence is done: ${output1} ${output2} ${output3}`;
 }
-function emptyCart(user){
-  amazonHistory.push(user)
-  return Object.assign({}, user, {cart:[]})
-}
 
-//implement a cart feature
-// 1/ Add items to cart
-// 2/ Add 3% tax to item in cart
-// 3/ Buy item: cart --> purchases
-// 4/ Empty cart
+console.log(parallel().then(console.log))
+console.log(sequence().then(console.log))
+console.log(race().then(console.log))
 
 
-console.log(amazonHistory)
+// https://academy.zerotomastery.io/courses/698487/lectures/12551162
