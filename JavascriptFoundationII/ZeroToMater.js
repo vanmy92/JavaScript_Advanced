@@ -1,3 +1,4 @@
+// 'use strict';
 // function printName() {
 //   return 'Andre anedd'
 // }
@@ -869,37 +870,155 @@
 // parallel
 // sequencial
 // race
-const promisify = (item, delay) =>
-  new Promise((resolve) => setTimeout(() => resolve(item), delay));
-const a = () => promisify("a", 100);
-const b = () => promisify("b", 8000);
-const c = () => promisify("c", 3000);
-// console.log(a(),b(),c())
+// const promisify = (item, delay) =>
+//   new Promise((resolve) => setTimeout(() => resolve(item), delay));
+// const a = () => promisify("a", 100);
+// const b = () => promisify("b", 8000);
+// const c = () => promisify("c", 3000);
+// // console.log(a(),b(),c())
 
-async function parallel() {
-  const promises = [a(), b(), c()];
-  const [output1, output2, output3] = await Promise.all(promises);
-  return `parallel  is done: ${output1} ${output2} ${output3}`;
-}
+// async function parallel() {
+//   const promises = [a(), b(), c()];
+//   const [output1, output2, output3] = await Promise.all(promises);
+//   return `parallel  is done: ${output1} ${output2} ${output3}`;
+// }
 
-async function race(){
-  const promises = [a(), b(), c()];
-  const output1 = await Promise.race(promises);
-  return `race is done: ${output1}`;
-}
+// async function race(){
+//   const promises = [a(), b(), c()];
+//   const output1 = await Promise.race(promises);
+//   return `race is done: ${output1}`;
+// }
 
 
 
-async function sequence(){
-  const output1 = await a();
-  const output2 = await b();
-  const output3 = await c();
-  return `sequence is done: ${output1} ${output2} ${output3}`;
-}
 
-console.log(parallel().then(console.log))
-console.log(sequence().then(console.log))
-console.log(race().then(console.log))
+
+// async function sequence(){
+//   const output1 = await a();
+//   const output2 = await b();
+//   const output3 = await c();
+//   return `sequence is done: ${output1} ${output2} ${output3}`;
+// }
+
+// console.log(parallel().then(console.log))
+// console.log(sequence().then(console.log))
+// console.log(race().then(console.log))
 
 
 // https://academy.zerotomastery.io/courses/698487/lectures/12551162
+
+// let fullName = 'my nguyen'
+
+// ;(function(message){
+//   console.log('Message: ' + message);
+// })('Chao ban !')
+
+
+//  private function 
+// let i = 0
+// ;(function myFunc(){
+//   i++
+//   console.log(i)
+//   if(i <10)
+//     myFunc()
+// })()
+
+
+// (function (){
+//     i++
+//     console.log(i)
+//     if(i <10)
+//       myFunc()
+// })()
+  
+
+// const app = {
+//   cars : [],
+//   add(car){
+//     this.cars.push(car)
+//   },
+//   edit(index, car){
+//     this.car[index] = car
+//   },
+//   delete(index, car){
+//     this.car.splice(index, 1)
+//   }
+
+// }
+
+// const app = (function (){
+
+//   const cars = []
+//   return {
+//     get(index){
+//       return cars[index]
+//     },
+//     add(car){
+//       cars.push(car)
+//     },
+//     edit(index, car){
+//       car[index] = car 
+//     },
+//     delete(index, car){
+//       car.splice(index, 1)
+//     }
+//   }
+// })()
+
+// function createLogger(namespace){
+//   function logger(message){
+//     console.log(`[${namespace}] ${message}`)
+//   }
+//   return logger
+// }
+
+
+// const infologger = createLogger('Infor')
+
+// infologger('bắt đầu gửi mail ')
+// infologger('gửi mail lỗi lần 1, gửi lại')
+// infologger('gửi mail thành công')
+
+
+// const errorlogger = createLogger('Error')
+
+// errorlogger('bắt đầu gửi mail ')
+// errorlogger('gửi mail lỗi lần 1, gửi lại')
+// errorlogger('gửi mail thành công')
+
+// function createStorage(key){
+//   const stora = JSON.parse(localStorage.getItem(key)) ?? {}
+
+//   const save = ()=>{
+//     localStorage.setItem(key, JSON.stringify(storage))
+//   }
+
+//   const storage ={
+//     get(key){
+//       return store[key]
+//     },
+//     set(key, value){
+//       store[key] = value
+//       save()
+//     },
+//     remove( key){
+//       delete store[key]
+//       save()
+//     }
+//   }
+//   return storage
+// }
+
+// const profileSetting = createStorage('profile_setting')
+
+// console.log(profileSetting.set('full name'))
+// profileSetting.set('full name', 'Son Dang')
+
+fulname = ' nguyen van a'
+
+function testFunc(){
+  age =18
+}
+console.log(fulname)
+
+console.log(age)
